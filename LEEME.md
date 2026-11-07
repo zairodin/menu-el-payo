@@ -85,7 +85,7 @@ Abre `https://USUARIO.github.io/menu-el-payo/qr.html`. Ahí puedes imprimir el p
 - **Hojaldra con mole**: no tiene foto. Que le tome una.
 - **Entregas**: en *Ajustes → Entregas* se pone `SI` si lleva pedidos cerca o `NO` si solo es para recoger.
 - **Horario y ubicación**: van vacíos. Conviene llenarlos.
-- **Instagram**: puse `martinrm6439`, que aparece en su puesto. Hay que confirmarlo.
+- **Redes**: Instagram y Facebook van vacíos en *Ajustes*. Si Payo los llena, aparecen solos en el menú.
 - No puse sus datos bancarios a propósito. Si los quiere en el menú, se pueden agregar en *Métodos de pago*.
 
 ## Probar en tu computadora

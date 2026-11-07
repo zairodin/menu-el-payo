@@ -299,7 +299,7 @@ const DATOS = {
   },
   {
    "Ajuste": "Instagram",
-   "Valor": "martinrm6439",
+   "Valor": "",
    "Ayuda": "Solo el usuario, sin @"
   },
   {

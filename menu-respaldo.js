@@ -252,7 +252,7 @@ window.PAYO_RESPALDO = {
   },
   {
    "Ajuste": "Instagram",
-   "Valor": "martinrm6439"
+   "Valor": ""
   },
   {
    "Ajuste": "Facebook",
