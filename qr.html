@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Código QR · El Payo</title>
+  <meta name="robots" content="noindex">
+  <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink: #17130f; --red: #e3262e; --yellow: #ffc83d; --cream: #fff6e8; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: "Outfit", system-ui, sans-serif; background: #e9e1d4; color: var(--ink); }
+    .tools { max-width: 560px; margin: 0 auto; padding: 20px 16px; display: grid; gap: 10px; }
+    .tools label { font-weight: 700; font-size: .9rem; }
+    .tools input { width: 100%; font: inherit; padding: 10px 12px; border-radius: 10px; border: 2px solid #cbbfae; }
+    .tools .row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .tools button { flex: 1; font: inherit; font-weight: 800; border: 0; border-radius: 999px; padding: 12px 18px; cursor: pointer; background: var(--ink); color: #fff; }
+    .tools button.alt { background: var(--yellow); color: var(--ink); }
+    .tools p { margin: 0; font-size: .9rem; color: #5c5247; }
+    .poster {
+      width: min(92vw, 520px); margin: 0 auto 40px; background: var(--ink); color: #fff; border-radius: 28px;
+      padding: 34px 28px 30px; text-align: center;
+      background-image: radial-gradient(rgba(255,255,255,.07) 1.2px, transparent 1.4px); background-size: 14px 14px;
+    }
+    .k { font-family: "Bowlby One", sans-serif; font-size: 2.2rem; line-height: 1; margin: 0; text-transform: uppercase; }
+    .t { font-family: "Bowlby One", sans-serif; font-size: 3.2rem; line-height: 1; margin: 4px 0 0; color: var(--red); text-transform: uppercase;
+         -webkit-text-stroke: 2px #fff; text-shadow: 4px 4px 0 #fff; transform: rotate(-2deg); }
+    .qr { background: #fff; border-radius: 22px; padding: 18px; margin: 26px auto 18px; width: 78%; border: 6px solid var(--yellow); }
+    .qr svg { display: block; width: 100%; height: auto; }
+    .cta { font-family: "Bowlby One", sans-serif; font-size: 1.5rem; text-transform: uppercase; margin: 0; color: var(--yellow); }
+    .sub { margin: 8px 0 0; font-weight: 700; font-size: 1.05rem; }
+    .tel { margin: 14px 0 0; font-weight: 800; font-size: 1.15rem; }
+    @media print {
+      body { background: #fff; }
+      .tools { display: none; }
+      .poster { width: 100%; max-width: 15cm; margin: 0 auto; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tools">
+    <label for="url">Dirección del menú</label>
+    <input id="url" type="url">
+    <p>Se llena sola con la dirección de esta página. Cámbiala solo si usas otro dominio.</p>
+    <div class="row">
+      <button type="button" id="imprimir">🖨️ Imprimir</button>
+      <button type="button" class="alt" id="descargar">⬇️ Descargar QR</button>
+    </div>
+  </div>
+
+  <div class="poster">
+    <p class="k">Desayunos</p>
+    <p class="t" id="nombre">“El Payo”</p>
+    <div class="qr" id="qr"></div>
+    <p class="cta">Escanea y mira el menú</p>
+    <p class="sub">Arma tu pedido a tu gusto y mándalo por WhatsApp</p>
+    <p class="tel" id="tel"></p>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+  <script src="configuracion.js"></script>
+  <script src="menu-respaldo.js"></script>
+  <script>
+    const input = document.getElementById('url');
+    input.value = location.href.replace(/qr\.html.*$/, '');
+    const aj = (window.PAYO_RESPALDO?.ajustes || []);
+    const tel = (aj.find((a) => /whatsapp/i.test(a.Ajuste)) || {}).Valor;
+    if (tel) document.getElementById('tel').textContent = '📱 Pedidos: ' + tel;
+
+    function hacerQR() {
+      const qr = qrcode(0, 'M');
+      qr.addData(input.value.trim());
+      qr.make();
+      document.getElementById('qr').innerHTML = qr.createSvgTag({ cellSize: 8, margin: 0, scalable: true });
+      return qr;
+    }
+    let qr = hacerQR();
+    input.addEventListener('input', () => { qr = hacerQR(); });
+    document.getElementById('imprimir').onclick = () => print();
+    document.getElementById('descargar').onclick = () => {
+      const a = document.createElement('a');
+      a.href = qr.createDataURL(16, 4);
+      a.download = 'qr-menu-el-payo.gif';
+      a.click();
+    };
+  </script>
+</body>
+</html>

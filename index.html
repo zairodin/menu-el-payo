@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Desayunos El Payo · Menú</title>
+  <meta name="description" content="Menú de Desayunos El Payo: chilaquiles, tortas, molletes y más, hechos al momento y a tu gusto. Pide por WhatsApp.">
+  <meta name="theme-color" content="#17130F">
+  <meta property="og:title" content="Desayunos El Payo · Menú">
+  <meta property="og:description" content="Hecho al momento y a tu gusto. Arma tu pedido y mándalo por WhatsApp.">
+  <meta property="og:image" content="fotos/chilaquiles-1.jpg">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍳</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+  <!-- PORTADA -->
+  <header class="hero" id="inicio">
+    <div class="hero-text">
+      <p class="hero-kicker">Desayunos</p>
+      <h1 class="hero-title" id="nombre-negocio">“El Payo”</h1>
+      <p class="hero-tagline" id="frase">Hecho al momento y a tu gusto</p>
+      <div class="hero-actions">
+        <a href="#menu" class="btn btn-yellow">Ver el menú</a>
+        <button type="button" class="btn btn-ghost" data-ruleta>🎲 ¿Qué pido?</button>
+      </div>
+    </div>
+    <div class="hero-photos" id="hero-fotos" aria-hidden="true"></div>
+  </header>
+
+  <div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
+
+  <div class="aviso" id="aviso" hidden></div>
+
+  <!-- NAVEGACIÓN DE CATEGORÍAS -->
+  <nav class="cats" id="cats" aria-label="Categorías del menú">
+    <div class="cats-scroll" id="cats-lista"></div>
+    <button type="button" class="cats-search" id="btn-buscar" aria-label="Buscar platillo">
+      <svg viewBox="0 0 24 24" width="20" height="20"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M16.5 16.5 21 21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+    </button>
+    <div class="search-box" id="search-box" hidden>
+      <input type="search" id="buscar" placeholder="Busca: chilaquiles, pierna, hot cakes…" autocomplete="off" aria-label="Buscar en el menú">
+      <button type="button" id="cerrar-buscar" aria-label="Cerrar búsqueda">✕</button>
+    </div>
+  </nav>
+
+  <main>
+    <section class="block favs" id="favoritos" hidden>
+      <div class="block-head">
+        <h2 class="block-title">Lo más pedido</h2>
+        <p class="block-sub">Los que no fallan 🔥</p>
+      </div>
+      <div class="favs-scroll" id="favs-lista"></div>
+    </section>
+
+    <div id="menu" class="menu"></div>
+    <p class="sin-resultados" id="sin-resultados" hidden>No encontramos ese antojo 😅 <br>Pídeselo a Payo por WhatsApp, seguro te lo prepara.</p>
+
+    <!-- RULETA -->
+    <section class="block ruleta-cta">
+      <div class="ruleta-card">
+        <span class="ruleta-dice" aria-hidden="true">🎲</span>
+        <div>
+          <h2>¿No sabes qué pedir?</h2>
+          <p>Deja que la suerte elija tu desayuno de hoy.</p>
+        </div>
+        <button type="button" class="btn btn-red" data-ruleta>¡Que me sorprenda!</button>
+      </div>
+    </section>
+
+    <!-- GALERÍA -->
+    <section class="block" id="galeria">
+      <div class="block-head">
+        <h2 class="block-title">Recién salidos de la plancha</h2>
+        <p class="block-sub">Fotos reales de lo que prepara Payo</p>
+      </div>
+      <div class="galeria" id="galeria-lista"></div>
+    </section>
+
+    <!-- OPINIONES -->
+    <section class="block opiniones" id="opiniones">
+      <div class="block-head">
+        <h2 class="block-title">¿Qué dice la banda?</h2>
+        <p class="block-sub">Opiniones de clientes</p>
+      </div>
+      <div class="op-resumen" id="op-resumen"></div>
+      <div class="op-scroll" id="op-lista"></div>
+
+      <form class="op-form" id="op-form" novalidate>
+        <h3>Déjale tu opinión a Payo</h3>
+        <div class="stars-input" id="stars-input" role="radiogroup" aria-label="Calificación">
+          <button type="button" role="radio" aria-checked="false" data-v="1" aria-label="1 estrella">★</button>
+          <button type="button" role="radio" aria-checked="false" data-v="2" aria-label="2 estrellas">★</button>
+          <button type="button" role="radio" aria-checked="false" data-v="3" aria-label="3 estrellas">★</button>
+          <button type="button" role="radio" aria-checked="false" data-v="4" aria-label="4 estrellas">★</button>
+          <button type="button" role="radio" aria-checked="false" data-v="5" aria-label="5 estrellas">★</button>
+        </div>
+        <p class="stars-label" id="stars-label">Toca las estrellas</p>
+        <label class="field">
+          <span>Tu nombre <small>(opcional)</small></span>
+          <input type="text" id="op-nombre" maxlength="40" autocomplete="given-name" placeholder="Ej. Ana">
+        </label>
+        <label class="field">
+          <span>Tu comentario</span>
+          <textarea id="op-comentario" rows="3" maxlength="400" placeholder="¿Qué te pareció? ¿Qué es lo que más te gusta?"></textarea>
+        </label>
+        <input type="text" id="op-web" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button type="submit" class="btn btn-red btn-block">Enviar opinión</button>
+        <p class="op-nota" id="op-nota"></p>
+      </form>
+    </section>
+
+    <!-- INFORMACIÓN -->
+    <section class="block info" id="info">
+      <div class="info-grid" id="info-lista"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer-brand" id="footer-nombre">Desayunos “El Payo”</p>
+    <p>Hecho al momento, con cariño.</p>
+    <p class="footer-links"><a href="ayuda.html">¿Eres Payo? Así actualizas tu menú</a></p>
+  </footer>
+
+  <!-- BARRA DE PEDIDO -->
+  <div class="cartbar" id="cartbar">
+    <a class="cartbar-wa" id="cartbar-wa" href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3Zm0 23.7c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7Zm5.9-8c-.3-.2-1.9-1-2.2-1-.3-.2-.5-.2-.7.1l-1 1.3c-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.2 1.3 3.4c.2.2 2.3 3.5 5.6 5 2.1.9 2.9 1 4 .8.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5 0-.2-.3-.3-.6-.4Z"/></svg>
+      <span>Pedir por WhatsApp</span>
+    </a>
+    <button type="button" class="cartbar-cart" id="cartbar-cart" hidden>
+      <span class="cartbar-count" id="cartbar-count">0</span>
+      <span class="cartbar-label">Ver mi pedido</span>
+      <span class="cartbar-total" id="cartbar-total"></span>
+    </button>
+  </div>
+
+  <!-- HOJAS (ventanas que suben desde abajo) -->
+  <div class="overlay" id="overlay" hidden></div>
+
+  <section class="sheet sheet-platillo" id="sheet-platillo" role="dialog" aria-modal="true" aria-labelledby="pl-nombre" hidden>
+    <button type="button" class="sheet-close" data-cerrar aria-label="Cerrar">✕</button>
+    <div class="pl-scroll" id="pl-scroll">
+      <div class="pl-gal" id="pl-media"></div>
+      <div class="pl-info" id="pl-body"></div>
+    </div>
+    <div class="sheet-foot">
+      <div class="qty" aria-label="Cantidad">
+        <button type="button" id="pl-menos" aria-label="Uno menos">−</button>
+        <output id="pl-qty">1</output>
+        <button type="button" id="pl-mas" aria-label="Uno más">+</button>
+      </div>
+      <button type="button" class="btn btn-red btn-grow" id="pl-agregar">Agregar</button>
+    </div>
+  </section>
+
+  <section class="sheet" id="sheet-carrito" role="dialog" aria-modal="true" aria-labelledby="car-titulo" hidden>
+    <button type="button" class="sheet-close" data-cerrar aria-label="Cerrar">✕</button>
+    <div class="sheet-body">
+      <h2 class="sheet-title" id="car-titulo">Mi pedido</h2>
+      <ul class="car-items" id="car-items"></ul>
+      <button type="button" class="link-btn" data-cerrar>+ Agregar algo más</button>
+
+      <div class="car-form">
+        <label class="field">
+          <span>¿A nombre de quién?</span>
+          <input type="text" id="car-nombre" maxlength="40" autocomplete="given-name" placeholder="Tu nombre">
+        </label>
+        <div class="field" id="car-entrega-campo">
+          <span>¿Cómo lo quieres?</span>
+          <div class="chips" id="car-entrega">
+            <button type="button" class="chip is-on" data-v="recoger">🏃 Paso por él</button>
+            <button type="button" class="chip" data-v="llevar">🛵 Me lo llevas</button>
+          </div>
+        </div>
+        <label class="field" id="car-dir-campo" hidden>
+          <span>¿A dónde te lo llevamos?</span>
+          <input type="text" id="car-dir" maxlength="120" autocomplete="street-address" placeholder="Oficina, local, calle…">
+        </label>
+        <div class="field">
+          <span>¿Para cuándo?</span>
+          <div class="chips" id="car-hora">
+            <button type="button" class="chip is-on" data-v="ya">⚡ Lo antes posible</button>
+            <button type="button" class="chip" data-v="hora">🕘 A una hora</button>
+          </div>
+          <input type="time" id="car-hora-input" class="mt" hidden aria-label="Hora">
+        </div>
+        <label class="field">
+          <span>¿Algo más que deba saber Payo? <small>(opcional)</small></span>
+          <textarea id="car-nota" rows="2" maxlength="200" placeholder="Ej. pago con transferencia, traigo cambio de $200…"></textarea>
+        </label>
+      </div>
+    </div>
+    <div class="sheet-foot sheet-foot-col">
+      <div class="car-total" id="car-total"></div>
+      <button type="button" class="btn btn-wa btn-block" id="car-enviar">
+        <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3Zm0 23.7c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7Zm5.9-8c-.3-.2-1.9-1-2.2-1-.3-.2-.5-.2-.7.1l-1 1.3c-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.2 1.3 3.4c.2.2 2.3 3.5 5.6 5 2.1.9 2.9 1 4 .8.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5 0-.2-.3-.3-.6-.4Z"/></svg>
+        Enviar pedido por WhatsApp
+      </button>
+    </div>
+  </section>
+
+  <section class="sheet sheet-ruleta" id="sheet-ruleta" role="dialog" aria-modal="true" aria-label="¿Qué pido?" hidden>
+    <button type="button" class="sheet-close" data-cerrar aria-label="Cerrar">✕</button>
+    <div class="sheet-body ruleta-body">
+      <p class="ruleta-kicker">Hoy te toca…</p>
+      <div class="ruleta-foto" id="ru-foto"></div>
+      <p class="ruleta-nombre" id="ru-nombre">…</p>
+      <p class="ruleta-detalle" id="ru-detalle"></p>
+      <div class="ruleta-acciones">
+        <button type="button" class="btn btn-ghost-dark" id="ru-otra">🎲 Otra vez</button>
+        <button type="button" class="btn btn-red" id="ru-quiero" disabled>¡Ese mero!</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto" hidden>
+    <button type="button" class="lb-close" data-cerrar aria-label="Cerrar">✕</button>
+    <button type="button" class="lb-nav lb-prev" id="lb-prev" aria-label="Foto anterior">‹</button>
+    <img id="lb-img" alt="">
+    <button type="button" class="lb-nav lb-next" id="lb-next" aria-label="Foto siguiente">›</button>
+    <div class="lb-caption">
+      <span id="lb-nombre"></span>
+      <button type="button" class="btn btn-yellow btn-sm" id="lb-pedir">Lo quiero</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="configuracion.js"></script>
+  <script src="menu-respaldo.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

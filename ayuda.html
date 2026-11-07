@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ayuda para Payo</title>
+  <meta name="robots" content="noindex">
+  <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink: #17130f; --red: #e3262e; --yellow: #ffc83d; --cream: #fff6e8; --muted: #6f6458; --line: #ecdfcb; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: "Outfit", system-ui, sans-serif; background: var(--cream); color: var(--ink); line-height: 1.5; font-size: 17px; }
+    header { background: var(--ink); color: #fff; padding: 30px 18px 26px; }
+    header h1 { font-family: "Bowlby One", sans-serif; font-weight: 400; margin: 0; font-size: 2rem; line-height: 1.05; text-transform: uppercase; }
+    header p { margin: 8px 0 0; color: #f5e6cf; }
+    main { max-width: 720px; margin: 0 auto; padding: 8px 16px 60px; }
+    h2 { font-family: "Bowlby One", sans-serif; font-weight: 400; text-transform: uppercase; font-size: 1.35rem; margin: 34px 0 10px; line-height: 1.1; }
+    .card { background: #fff; border: 2px solid var(--ink); border-radius: 16px; padding: 16px 18px; box-shadow: 4px 4px 0 var(--ink); margin-bottom: 14px; }
+    ol { margin: 0; padding-left: 1.3em; }
+    li { margin: 6px 0; }
+    code, .tag { background: var(--cream); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; font-family: inherit; font-weight: 800; }
+    .tip { background: var(--yellow); border-radius: 14px; padding: 12px 16px; font-weight: 600; margin: 12px 0; }
+    table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+    td { border-top: 1px solid var(--line); padding: 8px 6px; vertical-align: top; }
+    td:first-child { font-weight: 800; white-space: nowrap; }
+    a { color: var(--red); font-weight: 700; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Payo, así cambias tu menú</h1>
+    <p>Todo se hace desde tu celular, en la app <strong>Hojas de cálculo de Google</strong>. No hay que tocar código.</p>
+  </header>
+  <main>
+    <div class="tip">💡 Lo que escribas en tu hoja aparece en el menú en 1 o 2 minutos. Si no lo ves, cierra y vuelve a abrir la página del menú.</div>
+
+    <h2>1. Abre tu hoja</h2>
+    <div class="card">
+      <ol>
+        <li>Abre la app <strong>Hojas de cálculo de Google</strong> (o Google Drive) con tu cuenta de Gmail.</li>
+        <li>Busca la hoja <strong>Menú El Payo</strong>. Si no aparece, está en <strong>Compartidos conmigo</strong>. También te llegó por correo una invitación con el enlace.</li>
+        <li>Abajo verás pestañas: <span class="tag">Platillos</span> <span class="tag">Ajustes</span> <span class="tag">Opiniones</span> <span class="tag">Instrucciones</span>.</li>
+      </ol>
+    </div>
+
+    <h2>2. Cambios rápidos del día</h2>
+    <div class="card">
+      <table>
+        <tr><td>Se acabó algo</td><td>En <span class="tag">Platillos</span>, columna <strong>Disponible</strong>, pon <code>NO</code>. Saldrá “Hoy no hay”. Mañana lo regresas a <code>SI</code>.</td></tr>
+        <tr><td>Quitarlo del menú</td><td>En <strong>Disponible</strong> pon <code>OCULTAR</code> (o borra la fila).</td></tr>
+        <tr><td>Cambiar precio</td><td>Columna <strong>Precio</strong>: solo el número, ej. <code>45</code>.</td></tr>
+        <tr><td>Aviso del día</td><td>En <span class="tag">Ajustes</span>, fila <strong>Aviso</strong>: ej. <code>Hoy hay tamales 🫔</code>. Bórralo cuando ya no aplique.</td></tr>
+        <tr><td>Horario o lugar</td><td>En <span class="tag">Ajustes</span>: filas <strong>Horario</strong>, <strong>Ubicación</strong> y <strong>Enlace de Google Maps</strong>.</td></tr>
+        <tr><td>Cambiar de número</td><td>En <span class="tag">Ajustes</span>, fila <strong>WhatsApp</strong>: tus 10 dígitos.</td></tr>
+      </table>
+    </div>
+
+    <h2>3. Agregar un platillo nuevo</h2>
+    <div class="card">
+      <ol>
+        <li>En <span class="tag">Platillos</span>, escribe en una fila vacía (o inserta una fila donde quieras que salga).</li>
+        <li><strong>Categoría</strong>: la sección, ej. <code>Bebidas</code>. Si es nueva, se crea sola.</li>
+        <li><strong>Platillo</strong>: el nombre, ej. <code>Café de olla</code>.</li>
+        <li><strong>Descripción</strong>: una frase que antoje.</li>
+        <li><strong>Opciones</strong>: lo que el cliente escoge, separado por comas, ej. <code>Jamón, Pierna, Pollo</code>.</li>
+        <li><strong>Cuántas puede elegir</strong>: <code>1</code>, <code>2</code>… (vacío = 1).</li>
+        <li><strong>Opciones 2</strong> (opcional): un segundo grupo, ej. salsa <code>Verde, Roja</code>.</li>
+        <li><strong>Extras</strong> (opcional): con precio si cuestan, ej. <code>Aguacate $10, Queso extra $5</code>.</li>
+        <li><strong>Disponible</strong>: <code>SI</code>. <strong>Destacado</strong>: <code>SI</code> si quieres que salga en “Lo más pedido”.</li>
+      </ol>
+      <div class="tip">Si una opción cuesta más, ponle el precio con signo de pesos: <code>Bistec $10</code>. El menú lo suma solito.</div>
+    </div>
+
+    <h2>4. Poner tus fotos</h2>
+    <div class="card">
+      <ol>
+        <li>Abre <strong>Google Drive</strong> → <strong>Compartidos conmigo</strong> → carpeta <strong>Fotos menú</strong>.</li>
+        <li>Toca <strong>+</strong> → <strong>Subir</strong> y elige la foto de tu platillo.</li>
+        <li>En la foto, toca los <strong>⋮</strong> → <strong>Copiar enlace</strong>.</li>
+        <li>Pégalo en la columna <strong>Fotos</strong> del platillo. Si son varias, sepáralas con coma. La primera es la portada.</li>
+      </ol>
+      <div class="tip">Sube las fotos <strong>siempre a la carpeta Fotos menú</strong>. Esa carpeta ya está compartida para que se vean en el menú. Si las subes a otro lado, no van a aparecer.</div>
+    </div>
+
+    <h2>5. Opiniones de tus clientes</h2>
+    <div class="card">
+      <ol>
+        <li>Llegan solitas a la pestaña <span class="tag">Opiniones</span> y se ven en el menú.</li>
+        <li>Si alguna es grosera o falsa, <strong>borra esa fila</strong> o escribe <code>SI</code> en la columna <strong>Ocultar</strong>.</li>
+      </ol>
+    </div>
+
+    <h2>6. Tu código QR</h2>
+    <div class="card">
+      <p style="margin:0">Abre <a href="qr.html">la página del QR</a> para imprimirlo o descargarlo. Ponlo en tu puesto, en tus bolsas o en tus tarjetas.</p>
+    </div>
+
+    <h2>¿Algo no sale?</h2>
+    <div class="card">
+      <ol>
+        <li>Revisa que la hoja siga compartida como <strong>Cualquier persona con el enlace → Lector</strong>.</li>
+        <li>No cambies los nombres de las pestañas ni de los títulos de la primera fila.</li>
+        <li>Si la hoja falla, el menú sigue mostrando la última versión que funcionó.</li>
+      </ol>
+    </div>
+
+    <p style="text-align:center;margin-top:30px"><a href="./">← Volver al menú</a></p>
+  </main>
+</body>
+</html>
