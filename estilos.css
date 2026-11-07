@@ -30,6 +30,7 @@ body {
   line-height: 1.45;
   padding-bottom: calc(88px + var(--safe-b));
   overflow-x: hidden;
+  overscroll-behavior-x: none; /* sin rebote ni arrastre lateral de toda la página */
 }
 body.no-scroll { overflow: hidden; }
 img { display: block; max-width: 100%; }
@@ -116,9 +117,11 @@ a { color: inherit; }
 }
 
 /* ---------- cinta de nombres ---------- */
+/* el contenedor recorta la cinta inclinada para que nunca ensanche la página */
+.marquee-wrap { overflow: hidden; margin: -26px 0 -12px; padding: 12px 0; position: relative; z-index: 3; pointer-events: none; }
 .marquee {
   background: var(--yellow); color: var(--ink); overflow: hidden;
-  transform: rotate(-1.6deg); margin: -14px -10px 0; position: relative; z-index: 3;
+  transform: rotate(-1.6deg); margin: 0 -10px;
   border-block: 3px solid var(--ink);
 }
 .marquee-track {
